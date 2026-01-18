@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Students")
+@Table(name = "students")
 @Entity
 public class HocSinh {
 //    CREATE TABLE dbo.Students (
@@ -25,7 +25,6 @@ public class HocSinh {
 //);
 @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
-@Column(name = "Id")
 private Integer id;
 
 @Column(name = "StudentCode")

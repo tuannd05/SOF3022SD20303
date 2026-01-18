@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="" crossorigin="anonymous">
 </head>
 <body>
 Tim kiem hoc sinh UDPM
@@ -11,7 +13,7 @@ Tim kiem hoc sinh UDPM
     <input type="submit" value="Tim kiem">
 </form>
 Thong tin hoc sinh
-<table border="1" cellspacing="0" cellpadding="5">
+<table class="table table-bordered">
     <thead>
     <tr>
         <th>Id</th>
@@ -25,15 +27,15 @@ Thong tin hoc sinh
     </tr>
     </thead>
     <tbody>
-    <tr th:each="list : ${dsHocSinh}">
-        <td th:text="${list.id}"></td>
-        <td th:text="${list.studentCode}"></td>
-        <td th:text="${list.fullName}"></td>
-        <td th:text="${list.gender}"></td>
-        <td th:text="${list.email}"></td>
-        <td th:text="${list.phone}"></td>
-        <td th:text="${list.major}"></td>
-        <td th:text="${list.className}"></td>
+    <tr th:each="hs : ${listHocSinh}">
+        <td th:text="${hs.id}"></td>
+        <td th:text="${hs.studentCode}"></td>
+        <td th:text="${hs.fullName}"></td>
+        <td th:text="${hs.gender}"></td>
+        <td th:text="${hs.email}"></td>
+        <td th:text="${hs.phone}"></td>
+        <td th:text="${hs.major}"></td>
+        <td th:text="${hs.className}"></td>
     </tr>
     </tbody>
 </table>

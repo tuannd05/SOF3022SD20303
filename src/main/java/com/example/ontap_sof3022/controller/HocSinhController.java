@@ -21,4 +21,9 @@ List<HocSinh> listHocSinh = hocSinhRepo.findAll();
 model.addAttribute("listHocSinh",listHocSinh);
     return "hien-thi.html";
 }
+    @GetMapping("/tim-kiem")
+    public String timKiem(Model model, HocSinh hocSinh){
+
+        return "hien-thi.html";
+    }
 }
