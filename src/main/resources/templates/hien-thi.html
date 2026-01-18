@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Tim kiem hoc sinh UDPM
+<form action="/hoc-sinh/tim-kiem" method="get">
+    Nganh UDPM: <input type="text" name="major" placeholder="Nhap tai day"> <br>
+    <input type="submit" value="Tim kiem">
+</form>
+Thong tin hoc sinh
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>StudentCode</th>
+        <th>FullName</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Major</th>
+        <th>ClassName</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="list : ${dsHocSinh}">
+        <td th:text="${list.id}"></td>
+        <td th:text="${list.studentCode}"></td>
+        <td th:text="${list.fullName}"></td>
+        <td th:text="${list.gender}"></td>
+        <td th:text="${list.email}"></td>
+        <td th:text="${list.phone}"></td>
+        <td th:text="${list.major}"></td>
+        <td th:text="${list.className}"></td>
+    </tr>
+    </tbody>
+</table>
+<p th:text="${message}"></p>
+</body>
+</html>
