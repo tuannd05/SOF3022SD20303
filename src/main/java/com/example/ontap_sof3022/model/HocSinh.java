@@ -1,6 +1,9 @@
 package com.example.ontap_sof3022.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "students")
 @Entity
 public class HocSinh {
-//    CREATE TABLE dbo.Students (
+    //    CREATE TABLE dbo.Students (
 //    Id          INT IDENTITY(1,1) NOT NULL,
 //    StudentCode NVARCHAR(20)  NOT NULL,
 //    FullName    NVARCHAR(100) NOT NULL,
@@ -23,29 +26,37 @@ public class HocSinh {
 //
 //    CONSTRAINT PK_Students PRIMARY KEY (Id)
 //);
-@Id
-@GeneratedValue (strategy = GenerationType.IDENTITY)
-private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-@Column(name = "StudentCode")
-private String studentCode;
+    @NotBlank(message = "Student code không được để trống")
+    @Column(name = "StudentCode")
+    private String studentCode;
 
-@Column(name = "FullName")
-private String fullName;
+    @NotBlank(message = "Họ tên không được để trống")
+    @Column(name = "FullName")
+    private String fullName;
 
-@Column(name = "Gender")
-private String gender;
+    @NotNull(message = "Vui lòng chọn giới tính")
+    @Column(name = "Gender")
+    private Boolean gender;
 
-@Column(name = "Email")
-private String email;
+    @Email(message = "Email không đúng định dạng")
+    @Column(name = "Email")
+    private String email;
 
-@Column(name = "Phone")
-private String phone;
+    @NotBlank(message = "Số điện thoại không được để trống")
+    @Column(name = "Phone")
+    private String phone;
 
-@Column(name = "Major")
-private String major;
 
-@Column(name = "ClassName")
-private String className;
+    @NotBlank(message = "Ngành học không được để trống")
+    @Column(name = "Major")
+    private String major;
+
+    @NotBlank(message = "Tên lớp không được để trống")
+    @Column(name = "ClassName")
+    private String className;
 
 }

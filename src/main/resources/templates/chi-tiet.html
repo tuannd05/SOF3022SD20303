@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="" crossorigin="anonymous">
+</head>
+<body>
+Sua Hoc Sinh
+<form th:object="${hocSinh}" th:action="@{/hoc-sinh/{id}(id=${hocSinh.id})}" method="post" >
+    StudentCode: <input th:field="*{studentCode}"><i th:errors="*{studentCode}"></i> <br>
+    FullName: <input th:field="*{fullName}"><i th:errors="*{fullName}"></i> <br>
+    Gender: <input type="radio" th:field="*{gender}" value="true"> Nam
+    <input type="radio" th:field="*{gender}" value="false"> Nữ
+    <i th:errors="*{gender}"></i> <br>
+    Email: <input th:field="*{email}"><i th:errors="*{email}"></i> <br>
+    Phone: <input th:field="*{phone}"><i th:errors="*{phone}"></i> <br>
+    Major: <input th:field="*{major}"><i th:errors="*{major}"></i> <br>
+    ClassName: <input th:field="*{className}"><i th:errors="*{className}"></i> <br>
+    <button>Cap Nhat</button>
+</form>
+</body>
+</html>

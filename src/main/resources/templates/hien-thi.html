@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,11 +7,27 @@
           integrity="" crossorigin="anonymous">
 </head>
 <body>
-Tim kiem hoc sinh UDPM
-<form action="/hoc-sinh/tim-kiem" method="get">
-    Nganh UDPM: <input type="text" name="major" placeholder="Nhap tai day"> <br>
-    <input type="submit" value="Tim kiem">
+Them hoc sinh moi
+<form th:action="@{/hoc-sinh/them}" method="post" th:object="${hocSinh}">
+    StudentCode: <input th:field="*{studentCode}"><i th:errors="*{studentCode}"></i> <br>
+    FullName: <input th:field="*{fullName}"><i th:errors="*{fullName}"></i> <br>
+    Gender: <input type="radio" th:field="*{gender}" value="true"> Nam
+    <input type="radio" th:field="*{gender}" value="false"> Nữ
+    <i th:errors="*{gender}"></i> <br>
+    Email: <input th:field="*{email}"><i th:errors="*{email}"></i> <br>
+    Phone: <input th:field="*{phone}"><i th:errors="*{phone}"></i> <br>
+    Major: <input th:field="*{major}"><i th:errors="*{major}"></i> <br>
+    ClassName: <input th:field="*{className}"><i th:errors="*{className}"></i> <br>
+    <button>Them</button>
 </form>
+<form th:action="@{/hoc-sinh/tim-kiem}" method="get">
+    <input type="text"
+           name="key"
+           placeholder="Nhập từ khoá bất kỳ"
+           th:value="${key}">
+    <button class="btn btn-info">Search</button>
+</form>
+<p th:text="${message}"></p>
 Thong tin hoc sinh
 <table class="table table-bordered">
     <thead>
@@ -31,14 +47,19 @@ Thong tin hoc sinh
         <td th:text="${hs.id}"></td>
         <td th:text="${hs.studentCode}"></td>
         <td th:text="${hs.fullName}"></td>
-        <td th:text="${hs.gender}"></td>
+        <td th:text="${hs.gender ? 'Nam':'Nữ'}"></td>
         <td th:text="${hs.email}"></td>
         <td th:text="${hs.phone}"></td>
         <td th:text="${hs.major}"></td>
         <td th:text="${hs.className}"></td>
+        <td>
+            <a th:href="@{/hoc-sinh/{id}/edit(id=${hs.id})}">View-Update</a>
+            <a th:href="@{/hoc-sinh/{id}/delete(id=${hs.id})}"
+            onclick="return confirm('Ban co muon xoa hoc sinh nay khong?')">Delete
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
-<p th:text="${message}"></p>
 </body>
 </html>
