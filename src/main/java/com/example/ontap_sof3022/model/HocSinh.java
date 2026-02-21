@@ -50,7 +50,6 @@ public class HocSinh {
     @Column(name = "Phone")
     private String phone;
 
-
     @NotBlank(message = "Ngành học không được để trống")
     @Column(name = "Major")
     private String major;
@@ -58,5 +57,4 @@ public class HocSinh {
     @NotBlank(message = "Tên lớp không được để trống")
     @Column(name = "ClassName")
     private String className;
-
 }

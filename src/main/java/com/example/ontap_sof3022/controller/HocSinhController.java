@@ -9,23 +9,23 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 @RequestMapping("/hoc-sinh")
 public class HocSinhController {
     @Autowired
     private HocSinhRepo hocSinhRepo;
-
-//hienThi
+    //hienThi
     @GetMapping("/hien-thi")
     public String hienThi(Model model) {
+        //mo form moi
         model.addAttribute("hocSinh", new HocSinh());
+        //mo danh sach hoc sinh
         model.addAttribute("listHocSinh", hocSinhRepo.findAll());
         return "hien-thi.html";
     }
 
-// search
+    //search
     @GetMapping("/tim-kiem")
     public String timKiem(@RequestParam(required = false) String key, Model model) {
 
@@ -38,7 +38,6 @@ public class HocSinhController {
             model.addAttribute("key", key);
             model.addAttribute("listHocSinh", hocSinhRepo.searchAll(key));
         }
-
         return "hien-thi.html";
     }
 
@@ -59,9 +58,9 @@ public class HocSinhController {
         hocSinhRepo.save(hocSinh);
         return "redirect:/hoc-sinh/hien-thi";
     }
-
+    //    Khi them moi neu id da ton tai phuong thuc save hieu la => update doi tuong co id do
     //    return "redirect:/hoc-sinh/hien-thi": Redirect về trang
-//    danh sách sau khi lưu thành công (tránh submit lại khi refresh).
+    //    danh sách sau khi lưu thành công (tránh submit lại khi refresh).
 
     //delete
     @GetMapping("/{id}/delete")
@@ -91,4 +90,10 @@ public class HocSinhController {
         hocSinhRepo.save(hocSinh);
         return "redirect:/hoc-sinh/hien-thi";
     }
+    // giai thich code 21/1
+//    Với GET edit, bạn chỉ cần Model và @PathVariable id.
+//    Bạn tự nạp entity và put vào model: model.addAttribute("hocSinh", ...). Không cần @ModelAttribute.
+//    @ModelAttribute chỉ cần cho POST/PUT khi bind dữ liệu form gửi lên
+//    (ví dụ trong phương thức update hoặc create).
+    //giai thich code 27/1
 }

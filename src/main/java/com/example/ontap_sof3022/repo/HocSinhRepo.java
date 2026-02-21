@@ -14,7 +14,7 @@ import java.util.List;
 //Integer: Kieu khoa chinh (id)
 //ke thua JpaRepository co san toan bo phuong thuc CRUD/Query
 public interface HocSinhRepo extends JpaRepository<HocSinh, Integer> {
-    @Query("""
+    @Query(value = """
     SELECT h FROM HocSinh h
     WHERE
         h.studentCode LIKE %:key%

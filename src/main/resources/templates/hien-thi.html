@@ -7,6 +7,7 @@
           integrity="" crossorigin="anonymous">
 </head>
 <body>
+<h2 th:text="${message}"></h2>
 Them hoc sinh moi
 <form th:action="@{/hoc-sinh/them}" method="post" th:object="${hocSinh}">
     StudentCode: <input th:field="*{studentCode}"><i th:errors="*{studentCode}"></i> <br>
@@ -27,7 +28,6 @@ Them hoc sinh moi
            th:value="${key}">
     <button class="btn btn-info">Search</button>
 </form>
-<p th:text="${message}"></p>
 Thong tin hoc sinh
 <table class="table table-bordered">
     <thead>
